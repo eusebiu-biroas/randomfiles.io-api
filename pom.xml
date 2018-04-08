@@ -10,7 +10,7 @@
 
     <properties>
         <springframework.boot.version>1.5.10.RELEASE</springframework.boot.version>
-        <sonar.coverage.exclusions>**/RandomFilesApplication.java</sonar.coverage.exclusions>
+        <sonar.coverage.exclusions>**/RandomFilesApplication.java,**/WebConfig.java</sonar.coverage.exclusions>
 
     </properties>
 
