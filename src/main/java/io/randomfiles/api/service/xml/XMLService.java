@@ -40,6 +40,7 @@ public class XMLService {
     public ByteArrayOutputStream generateXML() throws ParserConfigurationException, TransformerException {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+        documentBuilderFactory.setProperty(XMLInputFactory.IS_SUPPORTING_EXTERNAL_ENTITIES, Boolean.FALSE);
         DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
         Document xmlDocument = documentBuilder.newDocument();
         Element rootElement = xmlDocument.createElement("randomXML");
