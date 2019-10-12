@@ -1,6 +1,6 @@
 package io.randomfiles.api.controller;
 
-import io.randomfiles.api.service.json.JSONService;
+import io.randomfiles.api.service.xml.XMLService;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -11,28 +11,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.inject.Inject;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 
 @RestController
-@RequestMapping("/api/rest/v1/json")
-public class JSONController {
+@RequestMapping("/api/rest/v1/xml")
+public class XMLController {
 
-    private JSONService jsonService;
+    private XMLService xmlService;
 
     @Inject
-    public JSONController(JSONService jsonService) {
-        this.jsonService = jsonService;
+    public XMLController(XMLService xmlService) {
+        this.xmlService = xmlService;
     }
 
     @GetMapping
-    public ResponseEntity<Resource> getJSON() throws IOException {
+    public ResponseEntity<Resource> getXML() throws ParserConfigurationException, TransformerException {
 
-        ByteArrayOutputStream byteArrayOutputStream = jsonService.generateJSON();
+        ByteArrayOutputStream byteArrayOutputStream = xmlService.generateXML();
         ByteArrayResource txtByteArray = new ByteArrayResource(byteArrayOutputStream.toByteArray());
 
         HttpHeaders headers = new HttpHeaders();
-        headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=randomfiles.io.json");
+        headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=randomfiles.io.xml");
 
         return ResponseEntity.ok()
                 .headers(headers)
