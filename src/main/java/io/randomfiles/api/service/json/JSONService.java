@@ -30,6 +30,7 @@ public class JSONService {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         ObjectMapper objectMapper = new ObjectMapper();
         ObjectNode objectNode = objectMapper.createObjectNode();
+        objectNode.put("randomString", randomService.getRandomString());
         objectNode.put("message", generalConfiguration.getWaterMarkText());
         objectNode.put("createdAt", ZonedDateTime.now().format(DateTimeFormatter.ISO_DATE));
         byteArrayOutputStream.write(objectNode.toString().getBytes());
