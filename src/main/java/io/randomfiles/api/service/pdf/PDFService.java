@@ -33,7 +33,7 @@ public class PDFService {
         document.add(paragraph1);
         document.add(Chunk.NEWLINE);
         Paragraph paragraph2 = new Paragraph(config.getWaterMarkText(), config.getFont());
-        paragraph2.setAlignment(Paragraph.ALIGN_CENTER);
+        paragraph2.setAlignment(Element.ALIGN_CENTER);
         document.add(paragraph2);
         document.close();
 

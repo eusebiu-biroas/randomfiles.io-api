@@ -29,15 +29,15 @@ public class JSONController {
     public ResponseEntity<Resource> getJSON() throws IOException {
 
         ByteArrayOutputStream byteArrayOutputStream = jsonService.generateJSON();
-        ByteArrayResource txtByteArray = new ByteArrayResource(byteArrayOutputStream.toByteArray());
+        ByteArrayResource jsonByteArray = new ByteArrayResource(byteArrayOutputStream.toByteArray());
 
         HttpHeaders headers = new HttpHeaders();
         headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=randomfiles.io.json");
 
         return ResponseEntity.ok()
                 .headers(headers)
-                .contentLength(txtByteArray.contentLength())
+                .contentLength(jsonByteArray.contentLength())
                 .contentType(MediaType.APPLICATION_OCTET_STREAM)
-                .body(txtByteArray);
+                .body(jsonByteArray);
     }
 }

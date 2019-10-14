@@ -30,15 +30,15 @@ public class XMLController {
     public ResponseEntity<Resource> getXML() throws ParserConfigurationException, TransformerException {
 
         ByteArrayOutputStream byteArrayOutputStream = xmlService.generateXML();
-        ByteArrayResource txtByteArray = new ByteArrayResource(byteArrayOutputStream.toByteArray());
+        ByteArrayResource xmlByteArray = new ByteArrayResource(byteArrayOutputStream.toByteArray());
 
         HttpHeaders headers = new HttpHeaders();
         headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=randomfiles.io.xml");
 
         return ResponseEntity.ok()
                 .headers(headers)
-                .contentLength(txtByteArray.contentLength())
+                .contentLength(xmlByteArray.contentLength())
                 .contentType(MediaType.APPLICATION_OCTET_STREAM)
-                .body(txtByteArray);
+                .body(xmlByteArray);
     }
 }
