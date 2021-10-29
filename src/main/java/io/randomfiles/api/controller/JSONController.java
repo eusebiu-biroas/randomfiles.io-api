@@ -43,7 +43,7 @@ public class JSONController {
     }
 
     @GetMapping("batch/{batchSize}")
-    public ResponseEntity<Resource> getPDFBatch(@PathVariable int batchSize) throws IOException {
+    public ResponseEntity<Resource> getJSONBatch(@PathVariable int batchSize) throws IOException {
 
         ByteArrayOutputStream byteArrayOutputStream = jsonService.generateJSONBatch(batchSize);
         ByteArrayResource zipByteArray = new ByteArrayResource(byteArrayOutputStream.toByteArray());

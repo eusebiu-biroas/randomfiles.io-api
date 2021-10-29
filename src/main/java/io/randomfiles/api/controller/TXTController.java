@@ -43,7 +43,7 @@ public class TXTController {
     }
 
     @GetMapping("batch/{batchSize}")
-    public ResponseEntity<Resource> getPDFBatch(@PathVariable int batchSize) throws IOException {
+    public ResponseEntity<Resource> getTXTBatch(@PathVariable int batchSize) throws IOException {
 
         ByteArrayOutputStream byteArrayOutputStream = txtService.generateTXTBatch(batchSize);
         ByteArrayResource zipByteArray = new ByteArrayResource(byteArrayOutputStream.toByteArray());

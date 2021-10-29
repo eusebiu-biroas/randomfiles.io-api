@@ -43,7 +43,7 @@ public class JSONService {
         ZipOutputStream zipOut = new ZipOutputStream(byteArrayOutputStream);
         for (int i = 0; i < batchSize; i++) {
             ByteArrayOutputStream pdfByteArrayOutputStream = generateJSON();
-            ZipEntry zipEntry = new ZipEntry("randomfiles.io-" + (i + 1) + ".pdf");
+            ZipEntry zipEntry = new ZipEntry("randomfiles.io-" + (i + 1) + ".json");
             zipOut.putNextEntry(zipEntry);
             zipOut.write(pdfByteArrayOutputStream.toByteArray());
             pdfByteArrayOutputStream.close();
