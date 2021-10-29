@@ -37,6 +37,8 @@ public class PDFControllerTest {
         byteArrayOutputStreamStream.write(1);
 
         Mockito.when(pdfService.generatePDF()).thenReturn(byteArrayOutputStreamStream);
+        Mockito.when(pdfService.generatePDFBatch(Mockito.anyInt())).thenReturn(byteArrayOutputStreamStream);
+
     }
 
     @Test
@@ -50,6 +52,18 @@ public class PDFControllerTest {
         assert (mvcResult.getResponse().getContentLength() > 0);
         Assert.assertThat(mvcResult.getResponse().getContentType()
                 , CoreMatchers.equalTo(MediaType.APPLICATION_PDF_VALUE));
+    }
 
+    @Test
+    public void getPDFBatchTest() throws Exception {
+        String url = "/api/rest/v1/pdf/batch/3";
+
+        MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get(url))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andReturn();
+
+        assert (mvcResult.getResponse().getContentLength() > 0);
+        Assert.assertThat(mvcResult.getResponse().getContentType()
+                , CoreMatchers.equalTo(MediaType.APPLICATION_OCTET_STREAM_VALUE));
     }
 }

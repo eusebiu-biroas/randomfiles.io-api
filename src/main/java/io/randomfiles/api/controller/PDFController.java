@@ -9,11 +9,13 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.inject.Inject;
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 
 @RestController
 @RequestMapping("/api/rest/v1/pdf")
@@ -42,5 +44,21 @@ public class PDFController {
                 .contentLength(pdfByteArray.contentLength())
                 .contentType(MediaType.APPLICATION_PDF)
                 .body(pdfByteArray);
+    }
+
+    @GetMapping("batch/{batchSize}")
+    public ResponseEntity<Resource> getPDFBatch(@PathVariable int batchSize) throws DocumentException, IOException {
+
+        ByteArrayOutputStream byteArrayOutputStream = pdfService.generatePDFBatch(batchSize);
+        ByteArrayResource zipByteArray = new ByteArrayResource(byteArrayOutputStream.toByteArray());
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=randomfiles.io.zip");
+
+        return ResponseEntity.ok()
+                .headers(headers)
+                .contentLength(zipByteArray.contentLength())
+                .contentType(MediaType.APPLICATION_OCTET_STREAM)
+                .body(zipByteArray);
     }
 }
