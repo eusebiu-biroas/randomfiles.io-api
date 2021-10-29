@@ -23,6 +23,7 @@ Open endpoints require no Authentication:
 * Get random JSON file: `GET http://localhost:8080/api/rest/v1/json`
 * Get a zipped batch of random JSON files: `GET http://localhost:8080/api/rest/v1/json/batch/{batchSize}`
 * Get random TXT file: `GET http://localhost:8080/api/rest/v1/txt`
+* Get a zipped batch of random TXT files: `GET http://localhost:8080/api/rest/v1/txt/batch/{batchSize}`
 
 ## How To Use
 

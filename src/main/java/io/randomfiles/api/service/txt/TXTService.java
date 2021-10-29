@@ -8,6 +8,8 @@ import org.springframework.util.Assert;
 import javax.inject.Inject;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
 @Service
 public class TXTService {
@@ -33,6 +35,20 @@ public class TXTService {
 
         byteArrayOutputStream.write(content.getBytes());
 
+        return byteArrayOutputStream;
+    }
+
+    public ByteArrayOutputStream generateTXTBatch(int batchSize) throws IOException {
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        ZipOutputStream zipOut = new ZipOutputStream(byteArrayOutputStream);
+        for (int i = 0; i < batchSize; i++) {
+            ByteArrayOutputStream pdfByteArrayOutputStream = generateTXT();
+            ZipEntry zipEntry = new ZipEntry("randomfiles.io-" + (i + 1) + ".pdf");
+            zipOut.putNextEntry(zipEntry);
+            zipOut.write(pdfByteArrayOutputStream.toByteArray());
+            pdfByteArrayOutputStream.close();
+        }
+        zipOut.close();
         return byteArrayOutputStream;
     }
 }
