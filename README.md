@@ -18,9 +18,10 @@ randomfiles.io-api is a Spring Boot Java project which exposes REST endpoints fo
 
 Open endpoints require no Authentication:
 * Get random PDF file: `GET http://localhost:8080/api/rest/v1/pdf`
-* Get a batch of random PDF files: `GET http://localhost:8080/api/rest/v1/pdf/batch/{batchSize}`
+* Get a zipped batch of random PDF files: `GET http://localhost:8080/api/rest/v1/pdf/batch/{batchSize}`
 * Get random XML file: `GET http://localhost:8080/api/rest/v1/xml`
 * Get random JSON file: `GET http://localhost:8080/api/rest/v1/json`
+* Get a zipped batch of random JSON files: `GET http://localhost:8080/api/rest/v1/json/batch/{batchSize}`
 * Get random TXT file: `GET http://localhost:8080/api/rest/v1/txt`
 
 ## How To Use
