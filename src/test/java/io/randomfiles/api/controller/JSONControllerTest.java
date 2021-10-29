@@ -37,6 +37,7 @@ public class JSONControllerTest {
         byteArrayOutputStreamStream.write(1);
 
         Mockito.when(jsonService.generateJSON()).thenReturn(byteArrayOutputStreamStream);
+        Mockito.when(jsonService.generateJSONBatch(Mockito.anyInt())).thenReturn(byteArrayOutputStreamStream);
     }
 
     @Test
@@ -51,5 +52,18 @@ public class JSONControllerTest {
         Assert.assertThat(mvcResult.getResponse().getContentType()
                 , CoreMatchers.equalTo(MediaType.APPLICATION_OCTET_STREAM_VALUE));
 
+    }
+
+    @Test
+    public void getJSONBatchTest() throws Exception {
+        String url = "/api/rest/v1/json/batch/3";
+
+        MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get(url))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andReturn();
+
+        assert (mvcResult.getResponse().getContentLength() > 0);
+        Assert.assertThat(mvcResult.getResponse().getContentType()
+                , CoreMatchers.equalTo(MediaType.APPLICATION_OCTET_STREAM_VALUE));
     }
 }

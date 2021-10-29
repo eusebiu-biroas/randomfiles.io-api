@@ -12,8 +12,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.inject.Inject;
 import java.io.*;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipInputStream;
+
+import static io.randomfiles.api.common.TestCommons.countFilesInZip;
 
 
 @RunWith(SpringRunner.class)
@@ -38,22 +38,9 @@ public class PDFServiceTest {
         int batchSize = 3;
         ByteArrayOutputStream byteArrayOutputStream = pdfService.generatePDFBatch(batchSize);
 
-        int fileCount = unzip(byteArrayOutputStream);
+        int fileCount = countFilesInZip(byteArrayOutputStream);
         Assert.assertNotNull(byteArrayOutputStream);
         assert (byteArrayOutputStream.size() > 0);
         assert (fileCount == batchSize);
-    }
-
-    private int unzip(ByteArrayOutputStream file) throws IOException {
-        int count = 0;
-        ZipInputStream zis = new ZipInputStream(new ByteArrayInputStream(file.toByteArray()));
-        ZipEntry zipEntry = zis.getNextEntry();
-        while (zipEntry != null) {
-            count++;
-            zipEntry = zis.getNextEntry();
-        }
-        zis.closeEntry();
-        zis.close();
-        return count;
     }
 }
