@@ -37,6 +37,7 @@ public class TXTControllerTest {
         byteArrayOutputStreamStream.write(1);
 
         Mockito.when(txtService.generateTXT()).thenReturn(byteArrayOutputStreamStream);
+        Mockito.when(txtService.generateTXTBatch(Mockito.anyInt())).thenReturn(byteArrayOutputStreamStream);
     }
 
     @Test
@@ -51,5 +52,18 @@ public class TXTControllerTest {
         Assert.assertThat(mvcResult.getResponse().getContentType()
                 , CoreMatchers.equalTo(MediaType.APPLICATION_OCTET_STREAM_VALUE));
 
+    }
+
+    @Test
+    public void getTXTBatchTest() throws Exception {
+        String url = "/api/rest/v1/txt/batch/3";
+
+        MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get(url))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andReturn();
+
+        assert (mvcResult.getResponse().getContentLength() > 0);
+        Assert.assertThat(mvcResult.getResponse().getContentType()
+                , CoreMatchers.equalTo(MediaType.APPLICATION_OCTET_STREAM_VALUE));
     }
 }
