@@ -20,6 +20,7 @@ Open endpoints require no Authentication:
 * Get random PDF file: `GET http://localhost:8080/api/rest/v1/pdf`
 * Get a zipped batch of random PDF files: `GET http://localhost:8080/api/rest/v1/pdf/batch/{batchSize}`
 * Get random XML file: `GET http://localhost:8080/api/rest/v1/xml`
+* Get a zipped batch of random XML files: `GET http://localhost:8080/api/rest/v1/xml/batch/{batchSize}`
 * Get random JSON file: `GET http://localhost:8080/api/rest/v1/json`
 * Get a zipped batch of random JSON files: `GET http://localhost:8080/api/rest/v1/json/batch/{batchSize}`
 * Get random TXT file: `GET http://localhost:8080/api/rest/v1/txt`

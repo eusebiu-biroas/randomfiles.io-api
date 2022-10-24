@@ -19,8 +19,11 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.XMLConstants;
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
 @Service
 public class XMLService {
@@ -74,5 +77,19 @@ public class XMLService {
         DOMSource domSource = new DOMSource(xmlDocument);
         StreamResult streamResult = new StreamResult(byteArrayOutputStream);
         transformer.transform(domSource, streamResult);
+    }
+
+    public ByteArrayOutputStream generateXMLBatch(int batchSize) throws TransformerException, ParserConfigurationException, IOException {
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        ZipOutputStream zipOut = new ZipOutputStream(byteArrayOutputStream);
+        for (int i = 0; i < batchSize; i++) {
+            ByteArrayOutputStream pdfByteArrayOutputStream = generateXML();
+            ZipEntry zipEntry = new ZipEntry("randomfiles.io-" + (i + 1) + ".xml");
+            zipOut.putNextEntry(zipEntry);
+            zipOut.write(pdfByteArrayOutputStream.toByteArray());
+            pdfByteArrayOutputStream.close();
+        }
+        zipOut.close();
+        return byteArrayOutputStream;
     }
 }

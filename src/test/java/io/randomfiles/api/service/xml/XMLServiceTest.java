@@ -14,6 +14,9 @@ import javax.inject.Inject;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+
+import static io.randomfiles.api.common.TestCommons.countFilesInZip;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = {XMLService.class, RandomService.class})
@@ -30,5 +33,16 @@ public class XMLServiceTest {
 
         Assert.assertNotNull(byteArrayOutputStream);
         assert (byteArrayOutputStream.size() > 0);
+    }
+
+    @Test
+    public void generateXMLBatchTest() throws IOException, TransformerException, ParserConfigurationException {
+        int batchSize = 3;
+        ByteArrayOutputStream byteArrayOutputStream = xmlService.generateXMLBatch(batchSize);
+
+        int fileCount = countFilesInZip(byteArrayOutputStream);
+        Assert.assertNotNull(byteArrayOutputStream);
+        assert (byteArrayOutputStream.size() > 0);
+        assert (fileCount == batchSize);
     }
 }

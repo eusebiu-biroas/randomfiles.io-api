@@ -43,7 +43,7 @@ public class TXTService {
         ZipOutputStream zipOut = new ZipOutputStream(byteArrayOutputStream);
         for (int i = 0; i < batchSize; i++) {
             ByteArrayOutputStream pdfByteArrayOutputStream = generateTXT();
-            ZipEntry zipEntry = new ZipEntry("randomfiles.io-" + (i + 1) + ".pdf");
+            ZipEntry zipEntry = new ZipEntry("randomfiles.io-" + (i + 1) + ".txt");
             zipOut.putNextEntry(zipEntry);
             zipOut.write(pdfByteArrayOutputStream.toByteArray());
             pdfByteArrayOutputStream.close();
