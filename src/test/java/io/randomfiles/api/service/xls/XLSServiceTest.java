@@ -32,4 +32,14 @@ public class XLSServiceTest {
         Assert.assertNotNull(byteArrayOutputStream);
         assert (byteArrayOutputStream.size() > 0);
     }
+    @Test
+    public void generateXLSBatchTest() throws IOException {
+        int batchSize = 3;
+        ByteArrayOutputStream byteArrayOutputStream = xlsService.generateXLSBatch(batchSize);
+
+        int fileCount = countFilesInZip(byteArrayOutputStream);
+        Assert.assertNotNull(byteArrayOutputStream);
+        assert (byteArrayOutputStream.size() > 0);
+        assert (fileCount == batchSize);
+    }
 }

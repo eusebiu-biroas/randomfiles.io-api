@@ -14,6 +14,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
 @Service
 public class XLSService {
@@ -49,4 +51,17 @@ public class XLSService {
         return byteArrayOutputStream;
     }
 
+    public ByteArrayOutputStream generateXLSBatch(int batchSize) throws IOException {
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        ZipOutputStream zipOut = new ZipOutputStream(byteArrayOutputStream);
+        for (int i = 0; i < batchSize; i++) {
+            ByteArrayOutputStream pdfByteArrayOutputStream = generateXLS();
+            ZipEntry zipEntry = new ZipEntry("randomfiles.io-" + (i + 1) + ".xls");
+            zipOut.putNextEntry(zipEntry);
+            zipOut.write(pdfByteArrayOutputStream.toByteArray());
+            pdfByteArrayOutputStream.close();
+        }
+        zipOut.close();
+        return byteArrayOutputStream;
+    }
 }

@@ -38,6 +38,7 @@ public class XLSControllerTest {
         byteArrayOutputStreamStream.write(1);
 
         Mockito.when(xlsService.generateXLS()).thenReturn(byteArrayOutputStreamStream);
+        Mockito.when(xlsService.generateXLSBatch(Mockito.anyInt())).thenReturn(byteArrayOutputStreamStream);
     }
 
     @Test
@@ -52,5 +53,18 @@ public class XLSControllerTest {
         Assert.assertThat(mvcResult.getResponse().getContentType()
                 , CoreMatchers.equalTo(MediaType.APPLICATION_OCTET_STREAM_VALUE));
 
+    }
+
+    @Test
+    public void getXLSBatchTest() throws Exception {
+        String url = "/api/rest/v1/xls/batch/3";
+
+        MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get(url))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andReturn();
+
+        assert (mvcResult.getResponse().getContentLength() > 0);
+        Assert.assertThat(mvcResult.getResponse().getContentType()
+                , CoreMatchers.equalTo(MediaType.APPLICATION_OCTET_STREAM_VALUE));
     }
 }
