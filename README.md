@@ -1,9 +1,14 @@
 # randomfiles.io-api
-[![Build Status](https://travis-ci.org/eusebiu-biroas/randomfiles.io-api.svg?branch=master)](https://travis-ci.org/eusebiu-biroas/randomfiles.io-api) [![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=randomfiles.io%3Arandomfiles.io-api&metric=alert_status)](https://sonarcloud.io/dashboard?id=randomfiles.io%3Arandomfiles.io-api) [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=randomfiles.io%3Arandomfiles.io-api&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=randomfiles.io%3Arandomfiles.io-api) [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=randomfiles.io%3Arandomfiles.io-api&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=randomfiles.io%3Arandomfiles.io-api) [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=randomfiles.io%3Arandomfiles.io-api&metric=security_rating)](https://sonarcloud.io/dashboard?id=randomfiles.io%3Arandomfiles.io-api) [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=randomfiles.io%3Arandomfiles.io-api&metric=bugs)](https://sonarcloud.io/dashboard?id=randomfiles.io%3Arandomfiles.io-api) [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=randomfiles.io%3Arandomfiles.io-api&metric=code_smells
-)](https://sonarcloud.io/dashboard?id=randomfiles.io%3Arandomfiles.io-api) [![Duplicated lines](https://sonarcloud.io/api/project_badges/measure?project=randomfiles.io%3Arandomfiles.io-api&metric=duplicated_lines_density
-)](https://sonarcloud.io/dashboard?id=randomfiles.io%3Arandomfiles.io-api) [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=randomfiles.io%3Arandomfiles.io-api&metric=ncloc
-)](https://sonarcloud.io/dashboard?id=randomfiles.io%3Arandomfiles.io-api) [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=randomfiles.io%3Arandomfiles.io-api&metric=coverage
-)](https://sonarcloud.io/dashboard?id=randomfiles.io%3Arandomfiles.io-api) 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=eusebiu-biroas_randomfiles.io-api&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=eusebiu-biroas_randomfiles.io-api)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=eusebiu-biroas_randomfiles.io-api&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=eusebiu-biroas_randomfiles.io-api)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=eusebiu-biroas_randomfiles.io-api&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=eusebiu-biroas_randomfiles.io-api) 
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=eusebiu-biroas_randomfiles.io-api&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=eusebiu-biroas_randomfiles.io-api) 
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=eusebiu-biroas_randomfiles.io-api&metric=bugs)](https://sonarcloud.io/summary/new_code?id=eusebiu-biroas_randomfiles.io-api) 
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=eusebiu-biroas_randomfiles.io-api&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=eusebiu-biroas_randomfiles.io-api)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=eusebiu-biroas_randomfiles.io-api&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=eusebiu-biroas_randomfiles.io-api) 
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=eusebiu-biroas_randomfiles.io-api&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=eusebiu-biroas_randomfiles.io-api)
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=eusebiu-biroas_randomfiles.io-api&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=eusebiu-biroas_randomfiles.io-api)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=eusebiu-biroas_randomfiles.io-api&metric=coverage)](https://sonarcloud.io/summary/new_code?id=eusebiu-biroas_randomfiles.io-api) 
 
 # [randomfiles.io](http://randomfiles.io) REST API
 
@@ -12,7 +17,7 @@ randomfiles.io-api is a Spring Boot Java project which exposes REST endpoints fo
 ## Milestones
 
 - [Milestone 1 (in progress)](https://github.com/eusebiu-biroas/randomfiles.io-api/milestone/1): In the first release
- users should be able to generate basic file formats: PDF, XML, TXT, JSON
+ users should be able to generate basic files for the following formats: PDF, XML, TXT, JSON, CSV, XLS, DOCX
                                                                                    
 ## Open endpoints
 
@@ -25,6 +30,12 @@ Open endpoints require no Authentication:
 * Get a zipped batch of random JSON files: `GET http://localhost:8080/api/rest/v1/json/batch/{batchSize}`
 * Get random TXT file: `GET http://localhost:8080/api/rest/v1/txt`
 * Get a zipped batch of random TXT files: `GET http://localhost:8080/api/rest/v1/txt/batch/{batchSize}`
+* Get random CSV file: `GET http://localhost:8080/api/rest/v1/csv`
+* Get a zipped batch of random CSV files: `GET http://localhost:8080/api/rest/v1/csv/batch/{batchSize}`
+* Get random XLS file: `GET http://localhost:8080/api/rest/v1/xls`
+* Get a zipped batch of random XLS files: `GET http://localhost:8080/api/rest/v1/xls/batch/{batchSize}`
+* Get random DOCX file: `GET http://localhost:8080/api/rest/v1/docx`
+* Get a zipped batch of random DOCX files: `GET http://localhost:8080/api/rest/v1/docx/batch/{batchSize}`
 
 ## How To Use
 
