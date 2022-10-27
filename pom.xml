@@ -10,8 +10,9 @@
 
     <properties>
         <springframework.boot.version>1.5.10.RELEASE</springframework.boot.version>
+        <sonar.organization>eusebiu-biroas</sonar.organization>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
         <sonar.coverage.exclusions>**/RandomFilesApplication.java,**/WebConfig.java</sonar.coverage.exclusions>
-
     </properties>
 
     <dependencies><!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web -->
