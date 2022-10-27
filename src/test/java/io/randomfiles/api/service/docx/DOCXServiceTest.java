@@ -1,0 +1,45 @@
+package io.randomfiles.api.service.docx;
+
+import io.randomfiles.api.configuration.GeneralConfiguration;
+import io.randomfiles.api.service.random.RandomService;
+import io.randomfiles.api.service.xls.XLSService;
+import org.junit.Assert;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.TestPropertySource;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import javax.inject.Inject;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+
+import static io.randomfiles.api.common.TestCommons.countFilesInZip;
+
+@RunWith(SpringRunner.class)
+@SpringBootTest(classes = {DOCXService.class, RandomService.class})
+@EnableConfigurationProperties(GeneralConfiguration.class)
+@TestPropertySource(locations = "classpath:application-test.properties")
+public class DOCXServiceTest {
+    @Inject
+    private DOCXService docxService;
+
+    @Test
+    public void generateDOCXTest() throws IOException {
+        ByteArrayOutputStream byteArrayOutputStream = docxService.generateDOCX();
+
+        Assert.assertNotNull(byteArrayOutputStream);
+        assert (byteArrayOutputStream.size() > 0);
+    }
+    @Test
+    public void generateDOCXBatchTest() throws IOException {
+        int batchSize = 3;
+        ByteArrayOutputStream byteArrayOutputStream = docxService.generateDOCXBatch(batchSize);
+
+        int fileCount = countFilesInZip(byteArrayOutputStream);
+        Assert.assertNotNull(byteArrayOutputStream);
+        assert (byteArrayOutputStream.size() > 0);
+        assert (fileCount == batchSize);
+    }
+}
