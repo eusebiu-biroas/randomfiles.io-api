@@ -17,7 +17,7 @@ randomfiles.io-api is a Spring Boot Java project which exposes REST endpoints fo
 ## Milestones
 
 - [Milestone 1 (in progress)](https://github.com/eusebiu-biroas/randomfiles.io-api/milestone/1): In the first release
- users should be able to generate basic files for the following formats: PDF, XML, TXT, JSON, CSV, XLS, DOCX
+ users should be able to generate basic files for the following formats: PDF, XML, TXT, JSON, CSV, XLS, XLSX, DOCX
                                                                                    
 ## Open endpoints
 
