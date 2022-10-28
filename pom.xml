@@ -10,8 +10,9 @@
 
     <properties>
         <springframework.boot.version>1.5.10.RELEASE</springframework.boot.version>
+        <sonar.organization>eusebiu-biroas</sonar.organization>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
         <sonar.coverage.exclusions>**/RandomFilesApplication.java,**/WebConfig.java</sonar.coverage.exclusions>
-
     </properties>
 
     <dependencies><!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web -->
@@ -26,6 +27,12 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <version>${springframework.boot.version}</version>
             <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.opencsv</groupId>
+            <artifactId>opencsv</artifactId>
+            <version>4.1</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/javax.inject/javax.inject -->
@@ -48,6 +55,18 @@
             <groupId>com.itextpdf</groupId>
             <artifactId>itextpdf</artifactId>
             <version>5.5.10</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>5.2.3</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>5.2.3</version>
         </dependency>
 
     </dependencies>
