@@ -34,6 +34,8 @@ Open endpoints require no Authentication:
 * Get a zipped batch of random CSV files: `GET http://localhost:8080/api/rest/v1/csv/batch/{batchSize}`
 * Get random XLS file: `GET http://localhost:8080/api/rest/v1/xls`
 * Get a zipped batch of random XLS files: `GET http://localhost:8080/api/rest/v1/xls/batch/{batchSize}`
+* Get random XLSX file: GET http://localhost:8080/api/rest/v1/xlsx
+  Get a zipped batch of random XLSX files: GET http://localhost:8080/api/rest/v1/xlsx/batch/{batchSize}
 * Get random DOCX file: `GET http://localhost:8080/api/rest/v1/docx`
 * Get a zipped batch of random DOCX files: `GET http://localhost:8080/api/rest/v1/docx/batch/{batchSize}`
 
