@@ -41,6 +41,7 @@
             <artifactId>javax.inject</artifactId>
             <version>1</version>
         </dependency>
+        
         <dependency>
             <groupId>com.itextpdf</groupId>
             <artifactId>itextpdf</artifactId>
