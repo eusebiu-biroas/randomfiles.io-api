@@ -13,6 +13,8 @@ import javax.inject.Inject;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
+import static io.randomfiles.api.common.TestCommons.countFilesInZip;
+
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = {XLSXService.class, RandomService.class})
@@ -28,5 +30,16 @@ public class XLSXServiceTest {
 
         Assert.assertNotNull(byteArrayOutputStream);
         assert (byteArrayOutputStream.size() > 0);
+    }
+
+    @Test
+    public void generateXLSXBatchTest() throws IOException {
+        int batchSize = 3;
+        ByteArrayOutputStream byteArrayOutputStream = xlsxService.generateXLSXBatch(batchSize);
+
+        int fileCount = countFilesInZip(byteArrayOutputStream);
+        Assert.assertNotNull(byteArrayOutputStream);
+        assert (byteArrayOutputStream.size() > 0);
+        assert (fileCount == batchSize);
     }
 }
