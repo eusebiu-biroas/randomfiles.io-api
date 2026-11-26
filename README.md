@@ -17,7 +17,7 @@ randomfiles.io-api is a Spring Boot Java project which exposes REST endpoints fo
 ## Milestones
 
 - [Milestone 1 (in progress)](https://github.com/eusebiu-biroas/randomfiles.io-api/milestone/1): In the first release
- users should be able to generate basic files for the following formats: PDF, XML, TXT, JSON, CSV, XLS, DOCX
+ users should be able to generate basic files for the following formats: PDF, XML, TXT, JSON, CSV, XLS, XLSX, DOCX
                                                                                    
 ## Open endpoints
 
@@ -34,6 +34,8 @@ Open endpoints require no Authentication:
 * Get a zipped batch of random CSV files: `GET http://localhost:8080/api/rest/v1/csv/batch/{batchSize}`
 * Get random XLS file: `GET http://localhost:8080/api/rest/v1/xls`
 * Get a zipped batch of random XLS files: `GET http://localhost:8080/api/rest/v1/xls/batch/{batchSize}`
+* Get random XLSX file: GET http://localhost:8080/api/rest/v1/xlsx
+  Get a zipped batch of random XLSX files: GET http://localhost:8080/api/rest/v1/xlsx/batch/{batchSize}
 * Get random DOCX file: `GET http://localhost:8080/api/rest/v1/docx`
 * Get a zipped batch of random DOCX files: `GET http://localhost:8080/api/rest/v1/docx/batch/{batchSize}`
 
